@@ -46,15 +46,11 @@ class planet{
         v3.add(PVector.mult(p.v, p.m));
         v3.div(m + p.m);
         v.set(v3);
-        if(blackhole){
-
-          m += p.m;
-          r += p.r/10;
-        }
+        m += p.m;
+        if(blackhole) r += p.r/10;
         else{
 
           r += p.r;
-          m += p.m;
           if(r >= width || r >= height){
 
             blackhole = true;
