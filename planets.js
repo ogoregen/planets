@@ -1,4 +1,3 @@
-
 var clear, start, click, release, planets, s;
 
 function setup(){
