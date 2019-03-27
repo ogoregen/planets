@@ -8,10 +8,10 @@ class planet{
 
   planet(PVector p, PVector v_){
 
-    v = new PVector(v_.x, v_.y);
+    v = v_.copy();
     v.div(50);
     a = new PVector();
-    position = new PVector(p.x, p.y);
+    position = p.copy();
     r = random(40);
     clr = int(random(50, 256));
     m = r;
