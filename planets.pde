@@ -40,7 +40,7 @@ void mousePressed(){
 
   start = true;
   click.set(mouseX, mouseY);
-  if(mouseX > width-60 && mouseY < height-20){
+  if(mouseX > width-60 && mouseY > height-40){
 
     clear = true;
     for(int i = planets.size()-1; i >= 0; i--) planets.remove(planets.get(i));
