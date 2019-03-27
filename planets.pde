@@ -66,7 +66,7 @@ void hud(){
   else{
 
     int count = planets.size();
-    if(count <= 1) s = "planet";
+    if(count == 1) s = "planet";
     else s = "planets";
     text(planets.size() + " " + s, 10, height-20);
     text("clear", width-60, height-20);
