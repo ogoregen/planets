@@ -19,10 +19,10 @@ class planet{
 
   void update(){
 
-    if(position.x > width) position.x = 0;
-    else if(position.x < 0) position.x = width;
-    if(position.y > height) position.y = 0;
-    else if(position.y < 0) position.y = height;
+    if(position.x > width + height) position.x = height*-1;
+    else if(position.x < height*-1) position.x = width + height;
+    if(position.y > height*2) position.y = height*-1;
+    else if(position.y < height*-1) position.y = height*2;
 
     v.add(a);
     position.add(v);
