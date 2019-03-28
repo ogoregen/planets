@@ -83,10 +83,10 @@ class planet{
 
   update(){
 
-    if(this.position.x > width) this.position.x = 0;
-    else if(this.position.x < 0) this.position.x = width;
-    if(this.position.y > height) this.position.y = 0;
-    else if(this.position.y < 0) this.position.y = height;
+    if(this.position.x > width + height) this.position.x = height*-1;
+    else if(this.position.x < height*-1) this.position.x = width + height;
+    if(this.position.y > height*2) this.position.y = height*-1;
+    else if(this.position.y < height*-1) this.position.y = height*2;
 
     this.v.add(this.a);
     this.position.add(this.v);
