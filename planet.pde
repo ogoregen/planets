@@ -3,8 +3,9 @@ class planet{
 
   PVector v, a, position;
   boolean blackhole;
+  PVector[] trail;
   float r, m;
-  int clr;
+  int clr, c; //c is to keep track of the trail
 
   planet(PVector p, PVector v_){
 
@@ -15,6 +16,8 @@ class planet{
     r = random(40);
     clr = int(random(50, 256));
     m = r;
+    trail = new PVector[200];
+    c = 0;
   }
 
   void update(){
@@ -23,7 +26,17 @@ class planet{
     else if(position.x < height*-1) position.x = width + height;
     if(position.y > height*2) position.y = height*-1;
     else if(position.y < height*-1) position.y = height*2;
+    
+    if(c == trail.length){
 
+      for(int i = 1; i < trail.length; i++) trail[i-1] = trail[i];
+      trail[trail.length-1] = position.copy();
+    }
+    else{
+
+      trail[c] = position.copy();
+      c++;
+    }
     v.add(a);
     position.add(v);
     a.mult(0);
@@ -82,5 +95,15 @@ class planet{
     else stroke(clr);
     fill(clr);
     ellipse(position.x, position.y, r, r);
+  }
+  
+  void trails(){
+
+    if(blackhole) stroke(255);
+    else stroke(clr);
+    for(int i = 0; i < c; i++){
+
+      point(trail[i].x, trail[i].y);
+    }
   }
 }
