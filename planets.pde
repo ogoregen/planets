@@ -31,6 +31,7 @@ void draw(){
       p.checkcollision(j);
     }
     p.update();
+    p.trails();
     p.place();
   }
   hud();
