@@ -25,6 +25,7 @@ function draw(){
       p.checkcollision(j);
     }
     p.update();
+    p.trails();
     p.place();
   }
   hud();
@@ -79,6 +80,8 @@ class planet{
     this.r = random(40);
     this.clr = int(random(50, 256));
     this.m = this.r;
+    this.c = 0;
+    this.trail = [];
   }
 
   update(){
@@ -87,6 +90,17 @@ class planet{
     else if(this.position.x < height*-1) this.position.x = width + height;
     if(this.position.y > height*2) this.position.y = height*-1;
     else if(this.position.y < height*-1) this.position.y = height*2;
+
+    if(this.c == 200){
+
+      for(let i = 1; i < 200; i++) this.trail[i-1] = this.trail[i];
+      this.trail[199] = this.position.copy();
+    }
+    else{
+
+      this.trail[this.c] = this.position.copy();
+      this.c++;
+    }
 
     this.v.add(this.a);
     this.position.add(this.v);
@@ -146,5 +160,12 @@ class planet{
     else stroke(this.clr);
     fill(this.clr);
     ellipse(this.position.x, this.position.y, this.r, this.r);
+  }
+
+  trails(){
+
+    if(this.blackhole) stroke(255);
+    else stroke(this.clr);
+    for(let i = 0; i < this.c; i++) point(this.trail[i].x, this.trail[i].y);
   }
 }
