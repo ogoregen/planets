@@ -16,7 +16,7 @@ class planet{
     r = random(40);
     clr = int(random(50, 256));
     m = r;
-    trail = new PVector[200];
+    trail = new PVector[2000];
     c = 0;
   }
 
