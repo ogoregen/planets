@@ -91,10 +91,10 @@ class planet{
     if(this.position.y > height*2) this.position.y = height*-1;
     else if(this.position.y < height*-1) this.position.y = height*2;
 
-    if(this.c == 200){
+    if(this.c == 2000){
 
-      for(let i = 1; i < 200; i++) this.trail[i-1] = this.trail[i];
-      this.trail[199] = this.position.copy();
+      for(let i = 1; i < 2000; i++) this.trail[i-1] = this.trail[i];
+      this.trail[1999] = this.position.copy();
     }
     else{
 
