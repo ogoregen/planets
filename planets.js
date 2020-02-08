@@ -1,3 +1,4 @@
+
 var clear, start, click, release, planets, s;
 
 function setup(){
@@ -169,3 +170,4 @@ class planet{
     for(let i = 0; i < this.c; i++) point(this.trail[i].x, this.trail[i].y);
   }
 }
+
