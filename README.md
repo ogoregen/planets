@@ -6,3 +6,6 @@ Also included is a p5.js version. See it working <a href ="https://flighty.xyz/p
 Feel free to let me know about any issue or idea.
 
 ![planets orbiting black hole](https://flighty.xyz/planets/screenshot.png "planets orbiting black hole")
+
+<p align="center"><img src="https://flighty.xyz/planets/screenshot.png" alt="planets" width="60%"></p>
+<p align="center"><i>Two planets orbiting a black hole</i></p>
