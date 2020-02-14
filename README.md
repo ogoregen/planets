@@ -4,3 +4,5 @@ This is a simple 2D gravitational attraction simulation. Collisions are presumed
 Also included is a p5.js version. See it working <a href ="https://flighty.xyz/planets">here</a>.
 
 Feel free to let me know about any issue or idea.
+
+![planets orbiting black hole](https://flighty.xyz/planets/screenshot.jpg "planets orbiting black hole")
