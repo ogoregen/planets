@@ -17,6 +17,10 @@ class Planet extends Body{
 		ellipse(this.position.x, this.position.y, this.radius, this.radius);
 	}
 
+	/*
+	 * Law of gravitation
+	 *     F = G * m1 * m2 / r^2
+	 */
 	static attract(planet1, planet2){
 
 		if(planet1 == planet2) return;
@@ -43,6 +47,12 @@ class Planet extends Body{
 		return distance <= planet1.radius + planet2.radius;
 	}
 
+	/*
+	 * Momentum
+	 *     p = m * V
+	 * Conservation of momentum
+	 *     p1 + p2 = p3
+	 */
 	static collide(planet1, planet2){
 
 		if(planet1 == planet2) return;

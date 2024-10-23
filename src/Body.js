@@ -9,6 +9,10 @@ class Body{
         this.acceleration = new p5.Vector();
 	}
 
+	/*
+	 * Second law of motion
+	 *     F = m * a
+	 */
 	applyForce(force){
 
 		let acceleration = force.copy().div(this.mass);
