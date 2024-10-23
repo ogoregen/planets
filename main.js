@@ -9,7 +9,8 @@ function setup(){
 	createCanvas(800, 600);
 
 	planets.push(new Planet(3000, new p5.Vector(width/2, height/2), new p5.Vector(0, 0)));
-	planets.push(new Planet(1000, new p5.Vector(width/3, height/2), new p5.Vector(0, 0)));
+	planets.push(new Planet(500, new p5.Vector(width/3, height/2), new p5.Vector(0, 20)));
+	planets.push(new Planet(500, new p5.Vector(width/4, height/2), new p5.Vector(0, -20)));
 }
 
 function draw(){
