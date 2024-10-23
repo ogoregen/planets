@@ -1,8 +1,8 @@
 
 import "Planet.js";
 
-var planets = [];
-var mousePressStart = new p5.Vector();
+let planets = [];
+let mousePressStart = new p5.Vector();
 
 function setup(){
 
