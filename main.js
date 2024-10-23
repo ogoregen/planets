@@ -2,13 +2,14 @@
 import "Planet.js";
 
 var planets = [];
+var mousePressStart = new p5.Vector();
 
 function setup(){
 
 	createCanvas(800, 600);
 
-	planets.push(new Planet(3000, new p5.Vector(width/2, height/2), p5.Vector.zero));
-	planets.push(new Planet(1000, new p5.Vector(width/3, height/2), p5.Vector.zero));
+	planets.push(new Planet(3000, new p5.Vector(width/2, height/2), new p5.Vector(0, 0)));
+	planets.push(new Planet(1000, new p5.Vector(width/3, height/2), new p5.Vector(0, 0)));
 }
 
 function draw(){
@@ -38,13 +39,26 @@ function draw(){
 			}
 		}
 	}
+
+	drawHud();
 }
 
 function mousePressed(){
 
-
+	mousePressStart.set(mouseX, mouseY);
 }
 
 function mouseReleased(){
 
+	let velocity = p5.Vector.sub(mousePressStart, new p5.Vector(mouseX, mouseY));
+	velocity.div(50);
+    planets.push(new Planet(1000, mousePressStart, velocity));
+}
+
+function drawHud(){
+
+	if(!mouseIsPressed) return;
+	
+	stroke(255);
+	line(mousePressStart.x, mousePressStart.y, mouseX, mouseY);
 }
