@@ -32,15 +32,13 @@ function draw(){
 			let planet2 = planets[j];
 			Planet.attract(planet1, planet2);
 			
-			if(Planet.shouldCollide(planet1, planet2)){
+			if(!Planet.shouldCollide(planet1, planet2)) continue;
 
-				let planet = Planet.collide(planet1, planet2);
-				if(planet){
+			let planet = Planet.collide(planet1, planet2);
+			if(!planet) continue;
 
-					planets[j] = planet;
-					planets.splice(i, 1);
-				} 
-			}
+			planets[j] = planet;
+			planets.splice(i, 1);
 		}
 	}
 
