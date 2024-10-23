@@ -8,14 +8,12 @@ class Planet extends Body{
 		super(mass, position, velocity);
         
         this.density = 1;
-		this.color = "#fff";
 		this.volume = this.mass / this.density;
 		this.radius = Math.pow(3 * this.volume / 4 * Math.PI, 1/3);
 	}
 
 	display(){
 		
-		fill(this.color);
 		ellipse(this.position.x, this.position.y, this.radius, this.radius);
 	}
 
