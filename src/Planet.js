@@ -7,7 +7,6 @@ class Planet extends Body{
       
 		super(mass, position, velocity);
         
-        this.density = 1;
 		this.volume = this.mass / this.density;
 		this.radius = Math.pow(3 * this.volume / 4 * Math.PI, 1/3);
 	}
