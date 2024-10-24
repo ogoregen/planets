@@ -15,18 +15,22 @@ function draw(){
 
 	background(0);
 
-	for(let i = 0; i < planets.length; i++){
+	for(let i = planets.length - 1; i >= 0; i--){
 		
-		planets[i].update();
-		planets[i].display();
+		let planet1 = planets[i]
 
-		for(let j = 0; j < planets.length; j++){
+		planet1.update();
+		planet1.display();
 
-			Planet.attract(planets[i], planets[j]);
+		for(let j = planets.length - 1; j >= 0; j--){
+
+			let planet2 = planets[j];
+
+			Planet.attract(planet1, planets[j]);
 			
-			if(!Planet.shouldCollide(planets[i], planets[j])) continue;
+			if(!Planet.shouldCollide(planet1, planet2)) continue;
 
-			let planet = Planet.collide(planets[i], planets[j]);
+			let planet = Planet.collide(planet1, planet2);
 			if(!planet) continue;
 
 			planets[j] = planet;
