@@ -26,7 +26,7 @@ function draw(){
 
 			let planet2 = planets[j];
 
-			Planet.attract(planet1, planets[j]);
+			Planet.attract(planet1, planet2);
 			
 			if(!Planet.shouldCollide(planet1, planet2)) continue;
 
