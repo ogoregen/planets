@@ -21,20 +21,17 @@ function draw(){
 	background(0);
 
 	for(let i = 0; i < planets.length; i++){
-
-		let planet1 = planets[i];
-
-		planet1.update();
-		planet1.display();
+		
+		planets[i].update();
+		planets[i].display();
 
 		for(let j = 0; j < planets.length; j++){
 
-			let planet2 = planets[j];
-			Planet.attract(planet1, planet2);
+			Planet.attract(planets[i], planets[j]);
 			
-			if(!Planet.shouldCollide(planet1, planet2)) continue;
+			if(!Planet.shouldCollide(planets[i], planets[j])) continue;
 
-			let planet = Planet.collide(planet1, planet2);
+			let planet = Planet.collide(planets[i], planets[j]);
 			if(!planet) continue;
 
 			planets[j] = planet;
