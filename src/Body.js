@@ -1,10 +1,10 @@
 
 class Body{
 
+	#acceleration;
 	mass;
 	position;
 	velocity;
-	#acceleration;
 
 	constructor(mass, position, velocity){
 
