@@ -1,19 +1,20 @@
 
-import "Body.js";
-
 class Planet extends Body{
+
+	#density = 1;
+	radius;
 
 	constructor(mass, position, velocity){
       
 		super(mass, position, velocity);
-        
-		this.density = 1;
-		this.volume = this.mass / this.density;
-		this.radius = Math.pow(3 * this.volume / 4 * Math.PI, 1/3);
+    
+		let volume = this.mass / this.#density;
+		this.radius = Math.pow(3 * volume / 4 * Math.PI, 1/3);
 	}
 
 	display(){
 		
+		fill(255);
 		ellipse(this.position.x, this.position.y, this.radius * 2);
 	}
 

@@ -1,19 +1,14 @@
 
-import "Planet.js";
-
 let planets = [];
 let mousePressStart = new p5.Vector();
 
 function setup(){
 
-	stroke(255);
-	fill(255);
+	createCanvas(windowWidth, windowHeight);
 
-	createCanvas(800, 600);
-
-	planets.push(new Planet(3000, new p5.Vector(width/2, height/2), new p5.Vector(0, 0)));
-	planets.push(new Planet(500, new p5.Vector(width/3, height/2), new p5.Vector(0, 20)));
-	planets.push(new Planet(500, new p5.Vector(width/4, height/2), new p5.Vector(0, -20)));
+	planets.push(new Planet(6000, new p5.Vector(width/2, height/2), new p5.Vector(0, 0)));
+	planets.push(new Planet(500, new p5.Vector(width/2-height/2, height/2), new p5.Vector(0, 5)));
+	planets.push(new Planet(500, new p5.Vector(width/2-height/4, height/2), new p5.Vector(0, -5)));
 }
 
 function draw(){
@@ -51,12 +46,13 @@ function mouseReleased(){
 
 	let velocity = p5.Vector.sub(mousePressStart, new p5.Vector(mouseX, mouseY));
 	velocity.div(50);
-    planets.push(new Planet(1000, mousePressStart, velocity));
+    planets.push(new Planet(1000, mousePressStart.copy(), velocity));
 }
 
 function drawHud(){
 
 	if(!mouseIsPressed) return;
-	
+
+	stroke(255);
 	line(mousePressStart.x, mousePressStart.y, mouseX, mouseY);
 }
