@@ -65,6 +65,6 @@ class Planet extends Body{
 
 		let position = p5.Vector.lerp(planet1.position, planet2.position, 0.5);
 
-		return new Planet(mass, position, velocity, "#fff");
+		return new Planet(mass, position, velocity);
 	}
 }
