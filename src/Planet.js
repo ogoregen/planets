@@ -21,6 +21,8 @@ class Planet extends Body{
 	/*
 	 * Law of gravitation
 	 *     F = G * m1 * m2 / r^2
+	 * 
+	 * Gravitational constant G is taken 1 resulting in attraction forces with greatly higher magnitudes.
 	 */
 	static attract(planet1, planet2){
 
