@@ -6,7 +6,7 @@ class Body{
 		this.mass = mass;
 		this.position = position;
 		this.velocity = velocity;
-        this.acceleration = new p5.Vector();
+		this.acceleration = new p5.Vector();
 	}
 
 	/*
