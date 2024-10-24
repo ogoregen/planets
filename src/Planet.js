@@ -14,7 +14,7 @@ class Planet extends Body{
 
 	display(){
 		
-		ellipse(this.position.x, this.position.y, this.radius, this.radius);
+		ellipse(this.position.x, this.position.y, this.radius * 2);
 	}
 
 	/*
