@@ -2,10 +2,10 @@
 class Body{
 
 	#acceleration;
-	mass;
-	position;
 	velocity;
-
+	position;
+	mass;
+	
 	constructor(mass, position, velocity){
 
 		this.mass = mass;
@@ -24,6 +24,9 @@ class Body{
 		this.#acceleration.add(acceleration);
 	}
 
+	/*
+	 * Euler integration
+	 */
 	update(){
 
 		this.velocity.add(this.#acceleration);
