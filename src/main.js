@@ -6,10 +6,10 @@ function setup(){
 
 	createCanvas(windowWidth, windowHeight);
 
-	planets.push(new Planet(8000, new p5.Vector(width/2, height/2), new p5.Vector(0, 0)));
-	planets.push(new Planet(100, new p5.Vector(width/2-height/4, height/2), new p5.Vector(0, -5)));
-	planets.push(new Planet(1000, new p5.Vector(width/2-height/2, height/2), new p5.Vector(0, 5)));
-	planets.push(new Planet(100, new p5.Vector(width/2-height/2-100, height/2), new p5.Vector(0, 10)));
+	planets.push(new Planet(40000, new p5.Vector(width/2, height/2), new p5.Vector(0, 0)));
+	planets.push(new Planet(100, new p5.Vector(width/2-height/4, height/2), new p5.Vector(0, -10)));
+	planets.push(new Planet(1000, new p5.Vector(width/2-height/2-100, height/2), new p5.Vector(0, 10)));
+	planets.push(new Planet(50, new p5.Vector(width/2-height/2-160, height/2), new p5.Vector(0, 15)));
 }
 
 function draw(){
@@ -52,7 +52,7 @@ function mouseReleased(){
 
 	let velocity = p5.Vector.sub(mousePressStart, new p5.Vector(mouseX, mouseY));
 	velocity.div(50);
-    planets.push(new Planet(1000, mousePressStart.copy(), velocity));
+    planets.push(new Planet(100, mousePressStart.copy(), velocity));
 }
 
 function drawHud(){

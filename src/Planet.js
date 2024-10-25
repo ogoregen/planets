@@ -1,7 +1,7 @@
 
 class Planet extends Body{
 
-	#density = 1;
+	#density = 3;
 	radius;
 
 	constructor(mass, position, velocity){
