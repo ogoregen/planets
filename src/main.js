@@ -36,6 +36,7 @@ function draw(){
 
 			planets[j] = planet;
 			planets.splice(i, 1);
+			break;
 		}
 	}
 
