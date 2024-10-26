@@ -29,7 +29,7 @@ class Body{
 	 */
 	applyForce(force){
 
-		let acceleration = force.copy().div(this.mass);
+		let acceleration = p5.Vector.div(force, this.mass);
 		this.#acceleration.add(acceleration);
 	}
 
@@ -40,6 +40,6 @@ class Body{
 
 		this.velocity.add(this.#acceleration);
 		this.position.add(this.velocity);
-		this.#acceleration.mult(0);
+		this.#acceleration.set(0, 0);
 	}
 }
