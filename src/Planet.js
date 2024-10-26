@@ -70,7 +70,8 @@ class Planet extends Body{
 		let mass = planet1.mass + planet2.mass;
 		let velocity = p5.Vector.div(momentum, mass);
 
-		let position = p5.Vector.lerp(planet1.position, planet2.position, 0.5);
+		let lerpWeight = map(planet2.mass - planet1.mass, -planet1.mass, planet2.mass, 0, 1);
+		let position = p5.Vector.lerp(planet1.position, planet2.position, lerpWeight);
 
 		return new Planet(mass, position, velocity);
 	}
