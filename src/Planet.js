@@ -22,7 +22,7 @@ class Planet extends Body{
 	 * Law of gravitation
 	 *     F = G * m1 * m2 / r^2
 	 * 
-	 * Gravitational constant G is taken 1 resulting in attraction forces with greatly higher magnitudes.
+	 * Gravitational constant G is taken 0.1 resulting in attraction forces with greatly higher magnitudes.
 	 */
 	static attract(planet1, planet2){
 
@@ -35,6 +35,9 @@ class Planet extends Body{
 		let magnitude = planet1.mass * planet2.mass / Math.pow(distance, 2);
 
 		force.mult(magnitude);
+
+		const gravitationalConstant = 0.1;
+		force.mult(gravitationalConstant);
 
 		planet2.applyForce(force);
 
