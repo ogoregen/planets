@@ -1,4 +1,9 @@
 
+/*
+ * G being higher than real results in attraction forces with greatly higher magnitudes.
+ */
+const GRAVITATIONAL_CONSTANT = 0.1;
+
 class Planet extends Body{
 
 	#density = 3;
@@ -21,8 +26,6 @@ class Planet extends Body{
 	/*
 	 * Law of gravitation
 	 *     F = G * m1 * m2 / r^2
-	 * 
-	 * Gravitational constant G is taken 0.1 resulting in attraction forces with greatly higher magnitudes.
 	 */
 	static attract(planet1, planet2){
 
@@ -32,12 +35,9 @@ class Planet extends Body{
 		force.normalize();
 
 		let distance = p5.Vector.dist(planet1.position, planet2.position);
-		let magnitude = planet1.mass * planet2.mass / Math.pow(distance, 2);
+		let magnitude = GRAVITATIONAL_CONSTANT * planet1.mass * planet2.mass / Math.pow(distance, 2);
 
 		force.mult(magnitude);
-
-		const gravitationalConstant = 0.1;
-		force.mult(gravitationalConstant);
 
 		planet2.applyForce(force);
 
