@@ -4,18 +4,26 @@ const DEFAULT_PLANET_MASS = 100;
 
 let selectedPlanetMass = DEFAULT_PLANET_MASS;
 let mousePressStart = new p5.Vector();
+let creatingPlanet = false;
 
 function mousePressed(){
 
+	let slider = select("input[type='range']");
+	if(slider.elt.matches(":hover")) return;
+
+	creatingPlanet = true
 	selectedPlanetMass = DEFAULT_PLANET_MASS;
 	mousePressStart.set(mouseX, mouseY);
 }
 
 function mouseReleased(){
 
+	if(!creatingPlanet) return;
+
 	let velocity = p5.Vector.sub(mousePressStart, new p5.Vector(mouseX, mouseY));
 	velocity.div(50);
     planets.push(new Planet(selectedPlanetMass, mousePressStart.copy(), velocity));
+	creatingPlanet = false;
 }
 
 function mouseWheel(event){
@@ -26,7 +34,7 @@ function mouseWheel(event){
 
 function drawUi(){
 
-	if(!mouseIsPressed) return;
+	if(!creatingPlanet) return;
 
 	fill(150);
 	stroke(150);

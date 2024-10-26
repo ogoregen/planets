@@ -36,10 +36,10 @@ class Body{
 	/*
 	 * Euler integration
 	 */
-	update(){
+	update(timeScale = 1){
 
-		this.#velocity.add(this.#acceleration);
-		this.position.add(this.#velocity);
-		this.#acceleration.set(0, 0);
+        this.#velocity.add(p5.Vector.mult(this.#acceleration, timeScale));
+        this.position.add(p5.Vector.mult(this.#velocity, timeScale));
+        this.#acceleration.set(0, 0);
 	}
 }

@@ -5,6 +5,10 @@ function setup(){
 
 	createCanvas(windowWidth, windowHeight);
 
+	slider = createSlider(0, 1, 0.1, 0);
+	slider.position(width - 240, 40);
+	slider.size(200);
+
 	planets.push(new Planet(400000, new p5.Vector(width/2, height/2), new p5.Vector(0, 0)));
 	planets.push(new Planet(1000, new p5.Vector(width/2-height/4, height/2), new p5.Vector(0, -15)));
 	planets.push(new Planet(10000, new p5.Vector(width/2-height/2-100, height/2), new p5.Vector(0, 10)));
@@ -19,7 +23,9 @@ function draw(){
 		
 		let planet1 = planets[i]
 
-		planet1.update();
+		let timeScale = slider.value();
+
+		planet1.update(timeScale);
 		planet1.display();
 
 		for(let j = planets.length - 1; j >= 0; j--){
