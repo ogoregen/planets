@@ -6,7 +6,7 @@ const GRAVITATIONAL_CONSTANT = 0.1;
 
 class Planet extends Body{
 
-	#density = 3;
+	#density = 10;
 	radius;
 
 	constructor(mass, position, velocity){
