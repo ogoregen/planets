@@ -15,6 +15,15 @@ class Body{
 	}
 
 	/*
+	 * Momentum
+	 *     p = m * V
+	 */
+	get momentum(){
+
+		return p5.Vector.mult(this.velocity, this.mass);
+	}
+
+	/*
 	 * Second law of motion
 	 *     F = m * a
 	 */

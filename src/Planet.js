@@ -51,8 +51,6 @@ class Planet extends Body{
 	}
 
 	/*
-	 * Momentum
-	 *     p = m * V
 	 * Conservation of momentum
 	 *     p1 + p2 = p3
 	 */
@@ -60,11 +58,9 @@ class Planet extends Body{
 
 		if(planet1 == planet2) return;
 		
-		let velocity = p5.Vector.mult(planet1.velocity, planet1.mass);
-		velocity.add(p5.Vector.mult(planet2.velocity, planet2.mass));
-
+		let momentum = p5.Vector.add(planet1.momentum, planet2.momentum);
 		let mass = planet1.mass + planet2.mass;
-		velocity.div(mass);
+		let velocity = p5.Vector.div(momentum, mass);
 
 		let position = p5.Vector.lerp(planet1.position, planet2.position, 0.5);
 
