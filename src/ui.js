@@ -21,7 +21,7 @@ function mouseReleased(){
 function mouseWheel(event){
 
 	selectedPlanetMass += event.delta * 20;
-	selectedPlanetMass = max(selectedPlanetMass, MIN_PLANET_MASS);
+	selectedPlanetMass = Math.max(selectedPlanetMass, MIN_PLANET_MASS);
 }
 
 function drawUi(){
