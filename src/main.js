@@ -6,7 +6,7 @@ function setup(){
 	createCanvas(windowWidth, windowHeight);
 
 	planets.push(new Planet(400000, new p5.Vector(width/2, height/2), new p5.Vector(0, 0)));
-	planets.push(new Planet(100, new p5.Vector(width/2-height/4, height/2), new p5.Vector(0, -10)));
+	planets.push(new Planet(1000, new p5.Vector(width/2-height/4, height/2), new p5.Vector(0, -15)));
 	planets.push(new Planet(10000, new p5.Vector(width/2-height/2-100, height/2), new p5.Vector(0, 10)));
 	planets.push(new Planet(50, new p5.Vector(width/2-height/2-160, height/2), new p5.Vector(0, 15)));
 }
