@@ -6,21 +6,26 @@ const GRAVITATIONAL_CONSTANT = 0.1;
 
 class Planet extends Body{
 
-	#density = 10;
+	static #density = 10;
 	radius;
 
 	constructor(mass, position, velocity){
       
 		super(mass, position, velocity);
     
-		let volume = this.mass / this.#density;
-		this.radius = Math.pow(3 * volume / 4 * Math.PI, 1/3);
+		this.radius = Planet.getRadius(mass);
 	}
 
 	display(){
 		
 		fill(255);
 		ellipse(this.position.x, this.position.y, this.radius * 2);
+	}
+
+	static getRadius(mass){
+
+		let volume = mass / Planet.#density;
+		return Math.pow(3 * volume / 4 * Math.PI, 1/3);
 	}
 
 	/*
