@@ -4,10 +4,7 @@ let planets = [];
 function setup(){
 
 	createCanvas(windowWidth, windowHeight);
-
-	slider = createSlider(0, 1, 0.1, 0);
-	slider.position(width - 240, 40);
-	slider.size(200);
+	initializeDomUi();
 
 	planets.push(new Planet(400000, new p5.Vector(width/2, height/2), new p5.Vector(0, 0)));
 	planets.push(new Planet(1000, new p5.Vector(width/2-height/4, height/2), new p5.Vector(0, -15)));
@@ -23,7 +20,7 @@ function draw(){
 		
 		let planet1 = planets[i]
 
-		let timeScale = slider.value();
+		let timeScale = getTimeScaleInput();
 
 		planet1.update(timeScale);
 		planet1.display();

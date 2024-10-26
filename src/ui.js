@@ -8,8 +8,7 @@ let creatingPlanet = false;
 
 function mousePressed(){
 
-	let slider = select("input[type='range']");
-	if(slider.elt.matches(":hover")) return;
+	if(isMousePressUsedByDom()) return;
 
 	creatingPlanet = true
 	selectedPlanetMass = DEFAULT_PLANET_MASS;
