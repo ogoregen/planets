@@ -2,7 +2,7 @@
 class Body{
 
 	#acceleration;
-	velocity;
+	#velocity;
 	position;
 	mass;
 	
@@ -10,7 +10,7 @@ class Body{
 
 		this.mass = mass;
 		this.position = position;
-		this.velocity = velocity;
+		this.#velocity = velocity;
 		this.#acceleration = new p5.Vector(0, 0);
 	}
 
@@ -20,7 +20,7 @@ class Body{
 	 */
 	get momentum(){
 
-		return p5.Vector.mult(this.velocity, this.mass);
+		return p5.Vector.mult(this.#velocity, this.mass);
 	}
 
 	/*
@@ -38,8 +38,8 @@ class Body{
 	 */
 	update(){
 
-		this.velocity.add(this.#acceleration);
-		this.position.add(this.velocity);
+		this.#velocity.add(this.#acceleration);
+		this.position.add(this.#velocity);
 		this.#acceleration.set(0, 0);
 	}
 }
