@@ -1,6 +1,6 @@
 
 /*
- * G being higher than real results in attraction forces with greatly higher magnitudes.
+ * G being greater than real results in attraction forces with higher magnitudes.
  */
 const GRAVITATIONAL_CONSTANT = 0.2;
 
