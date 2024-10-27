@@ -38,8 +38,8 @@ class Body{
 	 */
 	update(timeScale = 1){
 
-        this.#velocity.add(p5.Vector.mult(this.#acceleration, timeScale));
-        this.position.add(p5.Vector.mult(this.#velocity, timeScale));
-        this.#acceleration.set(0, 0);
+		this.#velocity.add(p5.Vector.mult(this.#acceleration, timeScale));
+		this.position.add(p5.Vector.mult(this.#velocity, timeScale));
+		this.#acceleration.set(0, 0);
 	}
 }
