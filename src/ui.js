@@ -20,7 +20,7 @@ function mouseReleased(){
 	if(!creatingPlanet) return;
 
 	let velocity = p5.Vector.sub(mousePressStart, new p5.Vector(mouseX, mouseY));
-	velocity.div(50);
+	velocity.div(20);
     planets.push(new Planet(selectedPlanetMass, mousePressStart.copy(), velocity));
 	creatingPlanet = false;
 }
