@@ -2,7 +2,7 @@
 /*
  * G being higher than real results in attraction forces with greatly higher magnitudes.
  */
-const GRAVITATIONAL_CONSTANT = 0.1;
+const GRAVITATIONAL_CONSTANT = 0.2;
 
 class Planet extends Body{
 

@@ -18,22 +18,18 @@ function draw(){
 
 	for(let i = planets.length - 1; i >= 0; i--){
 		
-		let planet1 = planets[i]
-
 		let timeScale = getTimeScaleInput();
 
-		planet1.update(timeScale);
-		planet1.display();
+		planets[i].update(timeScale);
+		planets[i].display();
 
-		for(let j = planets.length - 1; j >= 0; j--){
+		for(let j = i - 1; j >= 0; j--){
 
-			let planet2 = planets[j];
-
-			Planet.attract(planet1, planet2);
+			Planet.attract(planets[i], planets[j]);
 			
-			if(!Planet.shouldCollide(planet1, planet2)) continue;
+			if(!Planet.shouldCollide(planets[i], planets[j])) continue;
 
-			let planet = Planet.collide(planet1, planet2);
+			let planet = Planet.collide(planets[i], planets[j]);
 			if(!planet) continue;
 
 			planets[j] = planet;
