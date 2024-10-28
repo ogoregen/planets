@@ -37,13 +37,11 @@ class Planet extends Body{
 		
 		if(planet1 == planet2) return;
 		
-		let force = p5.Vector.sub(planet1.position, planet2.position);
-		force.normalize();
-		
 		let distance = p5.Vector.dist(planet1.position, planet2.position);
 		let magnitude = GRAVITATIONAL_CONSTANT * planet1.mass * planet2.mass / Math.pow(distance, 2);
 		
-		force.mult(magnitude);
+		let force = p5.Vector.sub(planet1.position, planet2.position);
+		force.setMag(magnitude);
 		
 		planet2.applyForce(force);
 		
