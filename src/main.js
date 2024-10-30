@@ -16,10 +16,11 @@ function draw(){
 	
 	background(0);
 	
+	let timeScale = getTimeScaleInput();
+	let planetsToRemove = [];
+
 	for(let i = planets.length - 1; i >= 0; i--){
-		
-		let timeScale = getTimeScaleInput();
-		
+				
 		planets[i].update(timeScale);
 		planets[i].display();
 		
@@ -33,10 +34,11 @@ function draw(){
 			if(!planet) continue;
 			
 			planets[j] = planet;
-			planets.splice(i, 1);
-			break;
+			planetsToRemove.push(i);
 		}
 	}
+
+	for(let i of planetsToRemove) planets.splice(i, 1);
 	
 	drawUi();
 }
