@@ -17,28 +17,37 @@ function draw(){
 	background(0);
 	
 	let timeScale = getTimeScaleInput();
-	let planetsToRemove = [];
 
-	for(let i = planets.length - 1; i >= 0; i--){
-				
-		planets[i].update(timeScale);
-		planets[i].display();
+	for(let planet of planets){
 		
-		for(let j = i - 1; j >= 0; j--){
+		planet.update(timeScale);
+		planet.draw();
+	}
+
+	let planetIndicesToRemove = new Set();
+	let newPlanets = [];
+
+	for(let i = 0; i < planets.length; i++){
+		
+		for(let j = i + 1; j < planets.length; j++){
 			
-			Planet.attract(planets[i], planets[j]);
+			Planet.applyGravitationalForce(planets[i], planets[j]);
 			
+			if(indicesToRemove.has(i) || indicesToRemove.has(j)) continue;
+
 			if(!Planet.shouldCollide(planets[i], planets[j])) continue;
 			
 			let planet = Planet.collide(planets[i], planets[j]);
 			if(!planet) continue;
-			
-			planets[j] = planet;
-			planetsToRemove.push(i);
+	
+			newPlanets.push(planet);
+			indicesToRemove.add(i);
+			indicesToRemove.add(j);
 		}
 	}
 
-	for(let i of planetsToRemove) planets.splice(i, 1);
+	for(let i of Array.from(planetIndicesToRemove).sort((a, b) => b - a)) planets.splice(i, 1);
+	planets.push(...newPlanets);
 	
 	drawUi();
 }

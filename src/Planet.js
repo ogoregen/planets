@@ -16,7 +16,7 @@ class Planet extends Body{
 		this.radius = Planet.getRadius(mass);
 	}
 	
-	display(){
+	draw(){
 		
 		fill(255);
 		stroke(255);
@@ -33,7 +33,7 @@ class Planet extends Body{
 	 * Law of gravitation
 	 *     F = G * m1 * m2 / r^2
 	 */
-	static attract(planet1, planet2){
+	static applyGravitationalForce(planet1, planet2){
 		
 		if(planet1 == planet2) return;
 		
