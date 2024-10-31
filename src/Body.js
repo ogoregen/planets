@@ -34,7 +34,7 @@ class Body{
 	}
 	
 	/*
-	 * Euler integration
+	 * Semi-implicit Euler integration
 	 */
 	update(timeScale = 1){
 		
