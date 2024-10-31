@@ -24,6 +24,12 @@ function draw(){
 		planet.draw();
 	}
 
+	handlePlanetInteractions();
+	drawUi();
+}
+
+function handlePlanetInteractions(){
+
 	let planetIndicesToRemove = new Set();
 	let newPlanets = [];
 
@@ -33,7 +39,7 @@ function draw(){
 			
 			Planet.applyGravitationalForce(planets[i], planets[j]);
 			
-			if(indicesToRemove.has(i) || indicesToRemove.has(j)) continue;
+			if(planetIndicesToRemove.has(i) || planetIndicesToRemove.has(j)) continue;
 
 			if(!Planet.shouldCollide(planets[i], planets[j])) continue;
 			
@@ -41,13 +47,11 @@ function draw(){
 			if(!planet) continue;
 	
 			newPlanets.push(planet);
-			indicesToRemove.add(i);
-			indicesToRemove.add(j);
+			planetIndicesToRemove.add(i);
+			planetIndicesToRemove.add(j);
 		}
 	}
 
-	for(let i of Array.from(planetIndicesToRemove).sort((a, b) => b - a)) planets.splice(i, 1);
+	for(let i of [...planetIndicesToRemove].sort((a, b) => b - a)) planets.splice(i, 1);
 	planets.push(...newPlanets);
-	
-	drawUi();
 }
