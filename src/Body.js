@@ -11,7 +11,7 @@ class Body{
 		this.mass = mass;
 		this.position = position;
 		this.#velocity = velocity;
-		this.#acceleration = new p5.Vector(0, 0);
+		this.#acceleration = new p5.Vector(0, 0, 0);
 	}
 	
 	/*
@@ -40,6 +40,6 @@ class Body{
 		
 		this.#velocity.add(p5.Vector.mult(this.#acceleration, timeScale));
 		this.position.add(p5.Vector.mult(this.#velocity, timeScale));
-		this.#acceleration.set(0, 0);
+		this.#acceleration.set(0, 0, 0);
 	}
 }

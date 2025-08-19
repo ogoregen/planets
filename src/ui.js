@@ -6,6 +6,7 @@ let selectedPlanetMass = DEFAULT_PLANET_MASS;
 let mousePressStart = new p5.Vector();
 let creatingPlanet = false;
 let scalingFactor = 1.0;
+let planetCreationDepth = 0; // Z-coordinate for new planets
 
 function mousePressed(){
 	
@@ -13,7 +14,7 @@ function mousePressed(){
 	
 	creatingPlanet = true
 	selectedPlanetMass = DEFAULT_PLANET_MASS;
-	mousePressStart.set(mouseX - width/2, mouseY - height/2);
+	mousePressStart.set(mouseX - width/2, mouseY - height/2, planetCreationDepth);
 	mousePressStart.div(scalingFactor);
 }
 
@@ -21,7 +22,7 @@ function mouseReleased(){
 
 	if(!creatingPlanet) return;
 	
-	let velocity = p5.Vector.sub(mousePressStart, new p5.Vector((mouseX - width/2) / scalingFactor, (mouseY - height/2) / scalingFactor));
+	let velocity = p5.Vector.sub(mousePressStart, new p5.Vector((mouseX - width/2) / scalingFactor, (mouseY - height/2) / scalingFactor, planetCreationDepth));
 	velocity.div(20 / scalingFactor);
 	planets.push(new Planet(selectedPlanetMass, mousePressStart.copy(), velocity));
 	creatingPlanet = false;
@@ -41,17 +42,39 @@ function mouseWheel(event){
 	}
 }
 
+function keyPressed(){
+	// Use Q/E keys to adjust Z-depth for planet creation
+	if(key === 'q' || key === 'Q'){
+		planetCreationDepth -= 50;
+	}
+	else if(key === 'e' || key === 'E'){
+		planetCreationDepth += 50;
+	}
+}
+
 function drawUi(){
 	
 	if(!creatingPlanet) return;
 	
+	// Save the current transform matrix
+	push();
+	
+	// Draw preview planet
+	translate(mousePressStart.x, mousePressStart.y, mousePressStart.z);
 	fill(150);
 	stroke(150);
-	let selectedPlanetDiameter = Planet.getRadius(selectedPlanetMass) * 2;
-	ellipse(mousePressStart.x, mousePressStart.y, selectedPlanetDiameter);
+	let selectedPlanetRadius = Planet.getRadius(selectedPlanetMass);
+	sphere(selectedPlanetRadius);
 	
+	pop();
+	
+	// Draw velocity line
+	push();
 	stroke(255);
-	line(mousePressStart.x, mousePressStart.y, (mouseX - width/2) / scalingFactor, (mouseY - height/2) / scalingFactor);
+	strokeWeight(2);
+	line(mousePressStart.x, mousePressStart.y, mousePressStart.z, 
+	     (mouseX - width/2) / scalingFactor, (mouseY - height/2) / scalingFactor, planetCreationDepth);
+	pop();
 }
 
 function getScalingFactor(){

@@ -18,9 +18,12 @@ class Planet extends Body{
 	
 	draw(){
 		
+		push();
+		translate(this.position.x, this.position.y, this.position.z);
 		fill(255);
 		stroke(255);
-		ellipse(this.position.x, this.position.y, this.radius * 2);
+		sphere(this.radius);
+		pop();
 	}
 	
 	static getRadius(mass){
