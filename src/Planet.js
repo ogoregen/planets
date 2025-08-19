@@ -19,9 +19,26 @@ class Planet extends Body{
 	draw(){
 		
 		push();
+		
+		// Add basic lighting for 3D effect
+		ambientLight(60, 60, 60);
+		directionalLight(255, 255, 255, -1, 0.5, -1);
+		
 		translate(this.position.x, this.position.y, this.position.z);
-		fill(255);
+		
+		// Color planets based on mass for better visual differentiation
+		if(this.mass > 100000) {
+			fill(255, 255, 100); // Large planets: yellowish (star-like)
+		} else if(this.mass > 5000) {
+			fill(100, 150, 255); // Medium planets: blueish
+		} else if(this.mass > 500) {
+			fill(150, 255, 150); // Small planets: greenish
+		} else {
+			fill(255, 100, 100); // Tiny planets: reddish
+		}
+		
 		stroke(255);
+		strokeWeight(0.5);
 		sphere(this.radius);
 		pop();
 	}

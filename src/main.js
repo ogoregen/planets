@@ -73,16 +73,30 @@ function draw3DInstructions(){
 	// Set 2D camera for UI
 	camera(0, 0, (height/2) / tan(PI/6), 0, 0, 0, 0, 1, 0);
 	
+	// Semi-transparent background for better readability
+	fill(0, 0, 0, 150);
+	noStroke();
+	rect(5, height - 110, 400, 105);
+	
 	fill(255);
 	textAlign(LEFT);
-	textSize(12);
+	textSize(14);
+	textStyle(BOLD);
 	
-	text("3D Controls:", 10, height - 100);
-	text("• Drag to rotate view", 10, height - 85);
-	text("• Q/E keys: Adjust planet creation depth", 10, height - 70);
-	text("• Mouse wheel: Scale view (or change planet size when creating)", 10, height - 55);
-	text("• Hold & drag: Create planet with velocity", 10, height - 40);
-	text("Current Z-depth: " + planetCreationDepth, 10, height - 25);
+	text("🌍 3D CONTROLS", 10, height - 95);
+	
+	textStyle(NORMAL);
+	textSize(12);
+	text("• Drag mouse: Rotate 3D view", 10, height - 80);
+	text("• Q/E keys: Adjust planet creation depth", 10, height - 65);
+	text("• Mouse wheel: Scale view (or planet size when creating)", 10, height - 50);
+	text("• Click & drag: Create planet with velocity", 10, height - 35);
+	
+	// Current depth indicator with color coding
+	fill(planetCreationDepth === 0 ? 255 : (planetCreationDepth > 0 ? 100 : 200), 
+	     planetCreationDepth === 0 ? 255 : 150, 
+	     planetCreationDepth === 0 ? 255 : 150);
+	text("Current Z-depth: " + planetCreationDepth, 10, height - 15);
 	
 	pop();
 }
