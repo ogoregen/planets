@@ -1,5 +1,6 @@
 
 let planets = [];
+let showOrbits = true; // Global variable to control orbit visibility
 
 function setup(){
 	
@@ -26,6 +27,10 @@ function draw(){
 	for(let planet of planets){
 		
 		planet.update(timeScale);
+		// Update orbit trail every few frames for performance
+		if(frameCount % 3 === 0) {
+			planet.updateOrbitTrail();
+		}
 		planet.draw();
 	}
 
@@ -76,27 +81,32 @@ function draw3DInstructions(){
 	// Semi-transparent background for better readability
 	fill(0, 0, 0, 150);
 	noStroke();
-	rect(5, height - 110, 400, 105);
+	rect(5, height - 130, 400, 125);
 	
 	fill(255);
 	textAlign(LEFT);
 	textSize(14);
 	textStyle(BOLD);
 	
-	text("🌍 3D CONTROLS", 10, height - 95);
+	text("🌍 3D CONTROLS", 10, height - 115);
 	
 	textStyle(NORMAL);
 	textSize(12);
-	text("• Drag mouse: Rotate 3D view", 10, height - 80);
-	text("• Q/E keys: Adjust planet creation depth", 10, height - 65);
-	text("• Mouse wheel: Scale view (or planet size when creating)", 10, height - 50);
-	text("• Click & drag: Create planet with velocity", 10, height - 35);
+	text("• Drag mouse: Rotate 3D view", 10, height - 100);
+	text("• Q/E keys: Adjust planet creation depth", 10, height - 85);
+	text("• O key: Toggle orbit trails", 10, height - 70);
+	text("• Mouse wheel: Scale view (or planet size when creating)", 10, height - 55);
+	text("• Click & drag: Create planet with velocity", 10, height - 40);
 	
 	// Current depth indicator with color coding
 	fill(planetCreationDepth === 0 ? 255 : (planetCreationDepth > 0 ? 100 : 200), 
 	     planetCreationDepth === 0 ? 255 : 150, 
 	     planetCreationDepth === 0 ? 255 : 150);
-	text("Current Z-depth: " + planetCreationDepth, 10, height - 15);
+	text("Current Z-depth: " + planetCreationDepth, 10, height - 25);
+	
+	// Orbit visibility indicator
+	fill(showOrbits ? 150 : 255, showOrbits ? 255 : 150, 150);
+	text("Orbit trails: " + (showOrbits ? "ON" : "OFF"), 10, height - 10);
 	
 	pop();
 }

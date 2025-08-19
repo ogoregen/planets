@@ -8,15 +8,24 @@ class Planet extends Body{
 	
 	static #density = 10;
 	radius;
+	orbitTrail = [];
+	maxTrailLength = 500; // Maximum number of trail points to store
 	
 	constructor(mass, position, velocity){
 		
 		super(mass, position, velocity);
 		
 		this.radius = Planet.getRadius(mass);
+		// Initialize orbit trail with current position
+		this.orbitTrail.push(position.copy());
 	}
 	
 	draw(){
+		
+		// Draw orbit trail first (behind the planet)
+		if(showOrbits) {
+			this.drawOrbitTrail();
+		}
 		
 		push();
 		
@@ -41,6 +50,54 @@ class Planet extends Body{
 		strokeWeight(0.5);
 		sphere(this.radius);
 		pop();
+	}
+	
+	drawOrbitTrail(){
+		
+		if(this.orbitTrail.length < 2) return;
+		
+		push();
+		
+		// Set trail color based on planet mass (similar to planet color but more transparent)
+		let trailColor;
+		if(this.mass > 100000) {
+			trailColor = [255, 255, 100, 150]; // Yellow trail
+		} else if(this.mass > 5000) {
+			trailColor = [100, 150, 255, 150]; // Blue trail
+		} else if(this.mass > 500) {
+			trailColor = [150, 255, 150, 150]; // Green trail
+		} else {
+			trailColor = [255, 100, 100, 150]; // Red trail
+		}
+		
+		stroke(trailColor[0], trailColor[1], trailColor[2], trailColor[3]);
+		strokeWeight(1);
+		noFill();
+		
+		// Draw the orbit trail as connected line segments
+		beginShape();
+		noFill();
+		for(let i = 0; i < this.orbitTrail.length; i++){
+			let pos = this.orbitTrail[i];
+			// Fade the trail - older points are more transparent
+			let alpha = map(i, 0, this.orbitTrail.length - 1, 30, trailColor[3]);
+			stroke(trailColor[0], trailColor[1], trailColor[2], alpha);
+			vertex(pos.x, pos.y, pos.z);
+		}
+		endShape();
+		
+		pop();
+	}
+	
+	updateOrbitTrail(){
+		
+		// Add current position to trail
+		this.orbitTrail.push(this.position.copy());
+		
+		// Remove old trail points to maintain performance
+		if(this.orbitTrail.length > this.maxTrailLength){
+			this.orbitTrail.shift();
+		}
 	}
 	
 	static getRadius(mass){

@@ -50,6 +50,10 @@ function keyPressed(){
 	else if(key === 'e' || key === 'E'){
 		planetCreationDepth += 50;
 	}
+	// Use O key to toggle orbit visibility
+	else if(key === 'o' || key === 'O'){
+		showOrbits = !showOrbits;
+	}
 }
 
 function drawUi(){
